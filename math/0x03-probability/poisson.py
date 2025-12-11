@@ -34,3 +34,17 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             else:
                 self.lambtha = float(sum(data) / len(data))
+
+    def pmf(self, k):
+        '''Calculates PMF '''
+        if k < 0:
+            # print('evaluo k')
+            return 0
+        k = int(k)
+        e = 2.7182818285
+        factorial = 1
+        for i in range(1, int(k) + 1):
+            factorial = factorial * i
+
+        return (pow(e, -self.lambtha) * (pow(self.lambtha, k)) / factorial)
+
